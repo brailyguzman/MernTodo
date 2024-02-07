@@ -2,7 +2,8 @@ import Todo from '../models/Todo';
 import { Request, Response } from 'express';
 
 const addTodoController = async (req: Request, res: Response) => {
-    const { text, completed } = req.body;
+    const text = req.body.text.trim();
+    const completed = req.body.completed;
     const userId = req.user.id;
     
     if (!text || completed === undefined) {

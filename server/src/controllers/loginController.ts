@@ -14,7 +14,9 @@ if (!SECRET) {
 }
 
 const loginController = async (req: Request, res: Response) => {
-    const { email, password, remember } = req.body;
+    const email = req.body.email.trim();
+    const password = req.body.password.trim();
+    const remember = req.body.remember;
 
     if (!email || !password) {
         return res

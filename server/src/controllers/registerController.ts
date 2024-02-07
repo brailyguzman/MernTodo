@@ -3,7 +3,9 @@ import User from '../models/User';
 import bcrypt from 'bcrypt';
 
 const registerController = async (req: Request, res: Response) => {
-    const { email, name, password } = req.body;
+    const email = req.body.email.trim();
+    const name = req.body.name.trim();
+    const password = req.body.password.trim();
 
     if (!email || !name || !password) {
         return res
