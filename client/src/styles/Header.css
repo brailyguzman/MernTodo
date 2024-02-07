@@ -1,0 +1,49 @@
+header {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+header .theme-button,
+header .logout-button {
+    padding: 5px;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--text-color);
+    transition: 0.3s ease-in-out;
+}
+
+header h1 a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.header-buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: 10px 20px;
+    }
+
+    header .theme-button,
+    header .logout-button {
+        font-size: 1.2rem;
+    }
+
+    header h1 a {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "name": "merntodo",
+    "version": "1.0.0",
+    "description": "A Full-stack To-do List made using the Mern Stack",
+    "main": "index.js",
+    "scripts": {
+        "client": "cd client && npm run dev",
+        "server": "cd server && npm run dev",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "keywords": [
+        "mern",
+        "todo",
+        "full-stack",
+        "react",
+        "node",
+        "express",
+        "mongodb",
+        "javascript",
+        "web-development"
+    ],
+    "author": "Braily Guzman",
+    "license": "MIT",
+    "dependencies": {
+        "concurrently": "^8.2.2"
+    }
+}
