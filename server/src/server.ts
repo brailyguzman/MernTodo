@@ -3,7 +3,6 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import router from './routes';
 import dotenv from 'dotenv';
-import helmet from 'helmet';
 
 dotenv.config();
 
@@ -23,14 +22,6 @@ app.use(cors({ origin: '*' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api', router);
-app.use(
-    helmet.contentSecurityPolicy({
-        directives: {
-            defaultSrc: ["'self'"],
-            scriptSrc: ["'self'", "'unsafe-eval'"],
-        },
-    })
-);
 
 mongoose
     .connect(mongoURL)
