@@ -59,6 +59,7 @@ const Login = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
             />
             <div className="login-register-password-container">
                 <input
@@ -70,6 +71,7 @@ const Login = () => {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    pattern='.{6,}'
                 />
                 <div
                     className="login-register-show-password"

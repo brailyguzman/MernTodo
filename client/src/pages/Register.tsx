@@ -32,6 +32,7 @@ const Register = () => {
                 name,
                 email,
                 password,
+                confirmPassword
             });
 
             if (response.status === 201) {
@@ -67,9 +68,10 @@ const Register = () => {
                 placeholder="Your name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                minLength={2}
+                minLength={3}
                 maxLength={30}
                 required
+                pattern='[a-zA-Z]+[a-zA-Z ]+'
             />
 
             <input
@@ -81,6 +83,7 @@ const Register = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
             />
 
             <div className="login-register-password-container">
@@ -94,6 +97,7 @@ const Register = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     minLength={6}
                     required
+                    pattern='.{6,}'
                 />
                 <div
                     className="login-register-show-password"
@@ -116,6 +120,7 @@ const Register = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     minLength={6}
                     required
+                    pattern='.{6,}'
                 />
                 <div
                     className="login-register-show-password"

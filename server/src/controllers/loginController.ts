@@ -18,6 +18,16 @@ const loginController = async (req: Request, res: Response) => {
     const password = req.body.password.trim();
     const remember = req.body.remember;
 
+    if (email && !email.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/)) {
+        return res.status(400).json({ error: 'Invalid email' });
+    }
+
+    if (password && !password.match(/.{6,}/)) {
+        return res
+            .status(400)
+            .json({ error: 'Password must be at least 6 characters' });
+    }
+
     if (!email || !password) {
         return res
             .status(400)

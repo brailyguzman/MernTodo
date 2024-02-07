@@ -6,6 +6,21 @@ const registerController = async (req: Request, res: Response) => {
     const email = req.body.email.trim();
     const name = req.body.name.trim();
     const password = req.body.password.trim();
+    const confirmPassword = req.body.confirmPassword.trim();
+
+    if (email && !email.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/)) {
+        return res.status(400).json({ error: 'Invalid email' });
+    }
+
+    if (password !== confirmPassword) {
+        return res.status(400).json({ error: 'Passwords do not match' });
+    }
+
+    if (password && !password.match(/.{6,}/)) {
+        return res
+            .status(400)
+            .json({ error: 'Password must be at least 6 characters' });
+    }
 
     if (!email || !name || !password) {
         return res
