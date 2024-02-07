@@ -8,7 +8,6 @@ import helmet from 'helmet';
 dotenv.config();
 
 const app: Express = express();
-const clientURL = process.env.VITE_URL || 'http://localhost:5173';
 const mongoURL =
     process.env.MONGODB_URL || 'mongodb://localhost:27017/merntodo';
 
