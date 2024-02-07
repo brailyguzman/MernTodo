@@ -38,6 +38,10 @@ a.cta {
 }
 
 @media screen and (max-width: 768px) {
+    #landing {
+        padding: 15px;
+    }
+
     #landing h1 {
         font-size: 2.5rem;
     }
