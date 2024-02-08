@@ -1,7 +1,9 @@
 import axios from 'axios';
 import AxiosRequestError from '../interfaces/AxiosRequestError';
+import checkToken from './checkToken';
 
 const getTodos = async () => {
+    if (!checkToken()) return;
     try {
         const response = await axios.get('/todos');
         return response.data;

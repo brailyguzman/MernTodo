@@ -3,6 +3,7 @@ import { FaX } from 'react-icons/fa6';
 import ITodos from '../interfaces/ITodos';
 import axios from 'axios';
 import AxiosRequestError from '../interfaces/AxiosRequestError';
+import checkToken from '../utils/checkToken';
 
 interface TodoProps {
     id: string;
@@ -13,6 +14,8 @@ interface TodoProps {
 
 const Todo = ({ id, text, completed, setTodos }: TodoProps) => {
     const handleCompleted = async () => {
+        if (!checkToken()) return;
+
         completed = !completed;
         try {
             const response = await axios.put('/todos/edit', {
@@ -42,6 +45,8 @@ const Todo = ({ id, text, completed, setTodos }: TodoProps) => {
     };
 
     const handleRemove = async (id: string) => {
+        if (!checkToken()) return;
+        
         try {
             const response = await axios.delete('/todos/remove', {
                 data: { id },

@@ -21,6 +21,8 @@ const Input = ({ todos, setTodos }: InputProps) => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        if (!localStorage.getItem('token')) return;
+
         try {
             const response = await axios.post('/todos/add', {
                 text: todo.text,
