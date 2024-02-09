@@ -29,6 +29,10 @@ const Input = ({ todos, setTodos }: InputProps) => {
                 completed: todo.completed,
             });
             setTodos([...todos, response.data]);
+            setTodo({
+                text: '',
+                completed: false,
+            });
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 const axiosError = error as AxiosRequestError;
