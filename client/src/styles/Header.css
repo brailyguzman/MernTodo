@@ -7,6 +7,8 @@ header {
     padding: 10px 50px;
     width: 100%;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
 }
 
 header .theme-button,
@@ -31,7 +33,6 @@ header h1 a {
     align-items: center;
     justify-content: center;
 }
-
 
 @media screen and (max-width: 768px) {
     header {
