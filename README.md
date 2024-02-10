@@ -11,7 +11,8 @@ To install the project, follow these steps:
 1. Clone the repository: `git clone https://github.com/brailyguzman/MernTodo.git`
 2. Navigate to the project directory: `cd MernTodo`
 3. Install the dependencies: `npm install && cd client && npm install && cd ../server && npm install && cd ..`
-
+4. Copy the `.env.example` file in each directory and rename the copy to `.env`.
+5. Open the new `.env` file and replace the dummy values with your actual values.
 
 ## Running the Project
 
