@@ -53,7 +53,7 @@ const Input = ({ todos, setTodos }: InputProps) => {
                 placeholder="Enter a todo"
                 value={todo.text}
                 onChange={(e) => setTodo({ ...todo, text: e.target.value })}
-                maxLength={25}
+                maxLength={40}
                 required
             />
         </form>

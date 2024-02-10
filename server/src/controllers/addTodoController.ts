@@ -5,11 +5,17 @@ const addTodoController = async (req: Request, res: Response) => {
     const text = req.body.text.trim();
     const completed = req.body.completed;
     const userId = req.user.id;
-    
+
     if (!text || completed === undefined) {
         return res
             .status(400)
             .json({ message: 'Title, status and userId are required' });
+    }
+
+    if (text.length > 40) {
+        return res
+            .status(400)
+            .json({ message: 'Title must be 40 characters or less' });
     }
 
     const todo = new Todo({
