@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import ITodos from '../interfaces/ITodos';
 import AxiosRequestError from '../interfaces/AxiosRequestError';
+import checkToken from '../utils/checkToken';
 
 interface InputProps {
     todos: ITodos[];
@@ -21,7 +22,7 @@ const Input = ({ todos, setTodos }: InputProps) => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (!localStorage.getItem('token')) return;
+        if (!checkToken()) return;
 
         try {
             const response = await axios.post('/todos/add', {
