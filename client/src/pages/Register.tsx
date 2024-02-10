@@ -52,6 +52,8 @@ const Register = () => {
                     type: 'error',
                     message: axiosError.response.data.error,
                 });
+                password && setPassword('');
+                confirmPassword && setConfirmPassword('');
             }
         }
     };
@@ -71,7 +73,6 @@ const Register = () => {
                 minLength={3}
                 maxLength={30}
                 required
-                pattern='[a-zA-Z]+[a-zA-Z ]+'
             />
 
             <input
@@ -83,7 +84,6 @@ const Register = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
             />
 
             <div className="login-register-password-container">
@@ -97,7 +97,6 @@ const Register = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     minLength={6}
                     required
-                    pattern='.{6,}'
                 />
                 <div
                     className="login-register-show-password"

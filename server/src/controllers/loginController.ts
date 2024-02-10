@@ -17,8 +17,9 @@ const loginController = async (req: Request, res: Response) => {
     const email = req.body.email.trim();
     const password = req.body.password.trim();
     const remember = req.body.remember;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if (email && !email.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/)) {
+    if (!emailRegex.test(email)) {
         return res.status(400).json({ error: 'Invalid email' });
     }
 

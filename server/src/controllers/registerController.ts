@@ -7,8 +7,15 @@ const registerController = async (req: Request, res: Response) => {
     const name = req.body.name.trim();
     const password = req.body.password.trim();
     const confirmPassword = req.body.confirmPassword.trim();
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if (email && !email.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/)) {
+    if ((name && name.length > 30) || name.length < 3) {
+        return res
+            .status(400)
+            .json({ error: 'Name must be between 3 and 30 characters' });
+    }
+
+    if (!emailRegex.test(email)) {
         return res.status(400).json({ error: 'Invalid email' });
     }
 
