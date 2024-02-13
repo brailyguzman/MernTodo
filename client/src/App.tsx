@@ -43,6 +43,7 @@ const App: React.FC = () => {
                 localStorage.removeItem('token');
                 axios.defaults.headers.common['Authorization'] = '';
                 setIsAuthenticated(false);
+                window.location.href = '/login';
             }
         };
         verifyToken();
