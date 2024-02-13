@@ -1,4 +1,6 @@
 # MernTodo
+![image](https://github.com/brailyguzman/MernTodo/assets/94770717/d776c7b9-e4df-47fc-a93a-f8d1026eb0b8)
+
 
 ## Description
 
