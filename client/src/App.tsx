@@ -12,6 +12,7 @@ import ITodos from './interfaces/ITodos';
 import verify from './utils/verify';
 import preferredTheme from './utils/preferredTheme';
 import getTodos from './utils/getTodos';
+import axios from 'axios';
 import './App.css';
 
 const App: React.FC = () => {
@@ -26,21 +27,25 @@ const App: React.FC = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        if (token) {
-            const verifyToken = async () => {
-                try {
-                    await verify(token);
-                    setIsAuthenticated(true);
-                    const todos = await getTodos();
-                    setTodos(todos);
-                } catch (error) {
-                    console.error('Error verifying token', error);
-                }
-            };
-            verifyToken();
-        } else {
+        if (!token) {
             setIsAuthenticated(false);
+            return;
         }
+
+        const verifyToken = async () => {
+            try {
+                await verify(token);
+                setIsAuthenticated(true);
+                const todos = await getTodos();
+                setTodos(todos);
+            } catch (error) {
+                console.error('Error verifying token', error);
+                localStorage.removeItem('token');
+                axios.defaults.headers.common['Authorization'] = '';
+                setIsAuthenticated(false);
+            }
+        };
+        verifyToken();
     }, []);
 
     useEffect(() => {
