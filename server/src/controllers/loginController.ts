@@ -19,6 +19,12 @@ const loginController = async (req: Request, res: Response) => {
     const remember = req.body.remember;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
+    if (!email || !password) {
+        return res
+            .status(400)
+            .json({ message: 'Email and password are required' });
+    }
+    
     if (!emailRegex.test(email)) {
         return res.status(400).json({ error: 'Invalid email' });
     }
@@ -27,12 +33,6 @@ const loginController = async (req: Request, res: Response) => {
         return res
             .status(400)
             .json({ error: 'Password must be at least 6 characters' });
-    }
-
-    if (!email || !password) {
-        return res
-            .status(400)
-            .json({ message: 'Email and password are required' });
     }
 
     const user = await User.findOne({ email });
