@@ -29,18 +29,18 @@ const loginController = async (req: Request, res: Response) => {
         return res.status(400).json({ error: 'Invalid email' });
     }
 
-    if (password && !password.match(/.{6,}/)) {
+    if (!password.match(/.{6,}/)) {
         return res
             .status(400)
             .json({ error: 'Password must be at least 6 characters' });
     }
 
-    const user = await User.findOne({ email });
-
-    if (!user) {
-        return res.status(400).json({ error: 'User not found' });
-    }
     try {
+        const user = await User.findOne({ email });
+    
+        if (!user) {
+            return res.status(400).json({ error: 'User not found' });
+        }
         const passwordMatch = await bcrypt.compare(password, user.passwordHash);
 
         if (!passwordMatch) {

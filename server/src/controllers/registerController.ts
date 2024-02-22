@@ -29,19 +29,18 @@ const registerController = async (req: Request, res: Response) => {
         return res.status(400).json({ error: 'Passwords do not match' });
     }
 
-    if (password && !password.match(/.{6,}/)) {
+    if (!password.match(/.{6,}/)) {
         return res
             .status(400)
             .json({ error: 'Password must be at least 6 characters' });
     }
-
-    const emailExists = await User.findOne({ email });
-
-    if (emailExists) {
-        return res.status(400).json({ error: 'Email already exists' });
-    }
-
+    
     try {
+        const emailExists = await User.findOne({ email });
+    
+        if (emailExists) {
+            return res.status(400).json({ error: 'Email already exists' });
+        }
         const passwordHash = await bcrypt.hash(password, 10);
         const user = new User({ email, name, passwordHash });
         await user.save();
