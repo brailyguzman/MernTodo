@@ -9,7 +9,7 @@ const registerController = async (req: Request, res: Response) => {
     const confirmPassword = req.body.confirmPassword.trim();
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if (!email || !name || !password) {
+    if (!email || !name || !password || !confirmPassword) {
         return res
             .status(400)
             .json({ error: 'Email, username, and password are required' });
